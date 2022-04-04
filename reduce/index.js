@@ -96,34 +96,32 @@ function total(arr) {
 
 function voterResults(arr) {
    return arr.reduce((acc,i)=> {
-      if (acc.numOldVotesPeople == undefined) {
-        acc.numYoungPeople = 0;
-        acc.numYoungVotes = 0;
-        acc.numMidVotesPeople = 0;
-        acc.numMidsPeople = 0;
-        acc.numOldVotesPeople = 0;
-        acc.numOldsPeople = 0;
-      } 
-      else if (i.age >= 18 && i.age <= 25) {
-          acc.numYoungPeople++;
-          if (i.voted) {
-            acc.numYoungVotes++;
-          }
-      }
-      else if (i.age >= 26 && i.age <= 35) {
-          acc.numMidsPeople++;
-          if (i.voted) {
-            acc.numMidVotesPeople++;
-          }
-      }
-      else if (i.age >= 36 && i.age <= 55) {
-          acc.numOldsPeople++;
-          if (i.voted) {
-            acc.numOldVotesPeople++;
-          }
-      }
-      return acc;
-   },{})
+     if (i.age >= 18 && i.age <= 25) {
+         acc.numYoungPeople++;
+         if (i.voted) {
+             acc.numYoungVotes++;
+         }
+     }
+     else if (i.age >= 26 && i.age <= 35) {
+         acc.numMidsPeople++;
+         if (i.voted) {
+             acc.numMidVotesPeople++;
+         }
+     }
+     else if (i.age >= 36 && i.age <= 55) {
+         acc.numOldsPeople++;
+         if (i.voted) {
+             acc.numOldVotesPeople++;
+         }
+     }
+     return acc;
+   },{
+    numYoungVotes: 0,
+    numYoungPeople: 0,
+    numMidVotesPeople: 0,
+    numMidsPeople: 0,
+    numOldVotesPeople: 0,
+    numOldsPeople: 0 })
 }
 
 console.log(voterResults(voters)); // Returned value shown below:
